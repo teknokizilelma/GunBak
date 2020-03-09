@@ -1,0 +1,36 @@
+﻿@model IEnumerable<GunBak.Models.haber>
+
+@using GunBak.Models;
+@{
+    ViewBag.Title = "Haber Düzenleme";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    SelectList sl = new SelectList(ViewBag.Kategori, "kategoriAd");
+}
+@if (ViewBag.Drm != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert(@ViewBag.Drm);
+        }
+    </script>
+}
+<h2>Haber Kaynak düzenleme</h2>
+<div class="success">@ViewBag.Drm</div>
+@foreach (var item in Model)
+{
+    <form name="duzenleHaberData" action="~/Admin/HaberSiteDuzenle/@item.haberRssId" class="" method="post">
+        Kaynak Numara :   <input type="text" name="id" class="form-control" value="@item.haberRssId" required readonly /><br>
+        Haber sitesi adı :   <input type="text" name="site" class="form-control" value="@item.haberRssAdi" required /><br>
+        Kaynağın RSS adresi :   <input type="text" name="siteRSS" class="form-control" value="@item.haberRssLink" required /><br>
+        @{
+            gundembakEntities w = new gundembakEntities();
+            string ad = w.kategoris.Where(x => x.kategoriId == item.kategoriId).Select(y => y.kategoriBaslik).FirstOrDefault();
+
+        }
+        Kategori :   @Html.DropDownList("KategoriBaslik", sl, ad, new { @class = "form-control" })<br>
+        <button type="submit" class="btn btn-primary width-100">Düzenle</button>
+
+
+    </form>
+}
+

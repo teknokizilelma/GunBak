@@ -1,0 +1,45 @@
+﻿@model IEnumerable<GunBak.Models.haber>
+@using GunBak.Models;
+
+@{
+    ViewBag.Title = "Haber Siteleri";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@if (ViewBag.Drm != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert(@ViewBag.Drm);
+        }
+    </script>
+}
+<h2>Haber Url</h2>
+
+<table style="width:100%" class="table">
+    <tr>
+        <th>Id</th>
+        <th>Haber</th>
+        <th>RSSURL</th>
+        <th>Kategori</th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.haberRssId</td>
+            <td>@item.haberRssAdi</td>
+            <td>@item.haberRssLink</td>
+            @{
+                gundembakEntities ktgr = new gundembakEntities();
+                string kategoriAdi = ktgr.kategoris.Where(x => x.kategoriId == item.kategoriId).Select(y => y.kategoriBaslik).FirstOrDefault();
+            }
+            <td>@kategoriAdi</td>
+            <td><a href="~/Admin/HaberSiteDuzenle/@item.haberRssId">Düzenle</a></td>
+            <td><a href="~/Admin/HaberSiteSil/@item.haberRssId">Sil</a></td>
+        </tr>
+
+    }
+</table>
+<a href="~/Admin/HaberSiteEkle" class="btn btn-default width-100">Haber Sitesi Ekle</a>

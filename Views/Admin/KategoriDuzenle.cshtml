@@ -1,0 +1,32 @@
+﻿@model IEnumerable<GunBak.Models.kategori>
+
+@{
+    ViewBag.Title = "KategoriDuzenle";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Kategori Düzenle</h2>
+@if (ViewBag.Drm != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert(@ViewBag.Drm);
+        }
+    </script>
+}
+<div class="success">@ViewBag.Drm</div>
+@foreach (var item in Model)
+{
+
+
+    <form name="kategoriDuzenle" action="~/Admin/KategoriDuzenle/@item.kategoriId" class="" method="post">
+        Kategori Numara :   <input type="text" name="kategoriNumara" class="form-control" value="@item.kategoriId" required readonly /><br>
+        Kateogri adı :   <input type="text" name="kategoriAdı" class="form-control" value="@item.kategoriAd" required /><br>
+        Kateogri başlığı :   <input type="text" name="kategoriBaslik" class="form-control" value="@item.kategoriBaslik" required /><br>
+
+        <button type="submit" class="btn btn-primary width-100">Kategori Düzenle</button>
+
+
+    </form>
+}
+
