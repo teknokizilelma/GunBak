@@ -1,0 +1,95 @@
+﻿@using GunBak.Models;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title -  GunBak Admin Panel</title>
+    <link href="~/ContentAdmin/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/ContentAdmin/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/ScriptsAdmin/modernizr-2.6.2.js"></script>
+    <link href="~/ContentAdmin/Menu.css" rel="stylesheet" type="text/css" />
+
+
+    <script>
+        @{ 
+            gundembakEntities db = new gundembakEntities();
+            string oturum = Convert.ToString(Session["rol"]);
+        }
+
+/* menü ikonuna tıklandığında responsive css sınıfının menüye uygulanması, uygulanmış ise de iptal edilmesi */
+function myFunction() {
+  var x = document.getElementById("ustMenu");
+  if (x.className === "menu") {
+    x.className += " responsive";
+  } else {
+    x.className = "menu";
+  }
+}
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+
+                @Html.ActionLink("GunBak Admin Panel", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            @{
+                if (Session["panel"] != null)
+                {
+            <div class="menu" id="ustMenu">
+                @{
+                    if (oturum == "admin")
+                    {
+                        @Html.ActionLink("Site Ana Sayfa", "Index", "Home", new { area = "" }, new { @class = "" })
+                        @Html.ActionLink("Haber Kaynak İşlemleri", "HaberSite", "Admin", new { area = "" }, new { @class = "" })
+                        @Html.ActionLink("Kategori İşlemleri", "KategoriListele", "Admin", new { area = "" }, new { @class = "" })
+                        @Html.ActionLink("Kullanıcı İşlemleri", "Kullanici", "Admin", new { area = "" }, new { @class = "" })
+                        @Html.ActionLink("Reklam İşlemleri", "Reklam", "Admin", new { area = "" }, new { @class = "" })
+                        @Html.ActionLink("Çıkış", "Logout", "Admin", new { area = "" }, new { @class = "" })
+
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Site Ana Sayfa", "Index", "Home", new { area = "" }, new { @class = "" })
+                        @Html.ActionLink("Haber Kaynak İşlemleri", "HaberSite", "Admin", new { area = "" }, new { @class = "" })
+                        @Html.ActionLink("Kategori İşlemleri", "KategoriListele", "Admin", new { area = "" }, new { @class = "" })
+                        @Html.ActionLink("Çıkış", "Logout", "Admin", new { area = "" }, new { @class = "" })
+
+                    }
+                }
+
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+            </div>
+                    }
+                }
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="~/ScriptsAdmin/jquery-1.10.2.min.js"></script>
+    <script src="~/ScriptsAdmin/bootstrap.min.js"></script>
+</body>
+</html>

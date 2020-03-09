@@ -1,0 +1,15 @@
+﻿@model IEnumerable<GunBak.Models.reklam>
+@{
+    ViewBag.Title = "Reklam";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Reklam</h2>
+@foreach(var item in Model)
+{
+<form name="Reklam" action="Reklam" method="post">
+    <label>Yan Reklam Linki : </label><br> <textarea name="yanreklam" rows="4" cols="50" class="form-control">@item.yanreklam</textarea><br>
+    <label>Üst Reklam Linki : </label><br> <textarea name="ustreklam" rows="4" cols="50" class="form-control">@item.ustreklam</textarea>
+     <button type="submit" class="btn btn-primary width-100">Reklam</button>
+</form>
+}

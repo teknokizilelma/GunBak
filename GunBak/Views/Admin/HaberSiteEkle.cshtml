@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Haber Sitesi ekle";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    SelectList sl = new SelectList(ViewBag.Kategori, "kategoriAd");
+
+}
+@if (ViewBag.Drm != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert(@ViewBag.Drm);
+        }
+    </script>
+}
+<h2>Kaynak Ekle</h2>
+<div class="success">@ViewBag.Drm</div>
+<form name="siteEkle" action="~/Admin/HaberSiteEkle" method="post">
+    <label>Site Adı </label>      <input type="text" class="form-control" name="siteAdi" required /><br>
+    <label>RSS Adresi </label>      <input type="text" class="form-control" name="siteRSS" required /><br>
+    <label> Kategori </label>   @Html.DropDownList("KategoriBaslik", sl, new { @class = "form-control" })<br>
+
+    <br>
+    <button type="submit" class="btn btn-primary width-100">Haber Kaynak Ekle</button>
+
+</form>
+

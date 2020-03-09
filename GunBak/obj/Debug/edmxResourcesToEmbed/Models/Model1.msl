@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="gundembakModelStoreContainer" CdmEntityContainer="gundembakEntities">
+    <EntitySetMapping Name="habers">
+      <EntityTypeMapping TypeName="gundembakModel.haber">
+        <MappingFragment StoreEntitySet="haber">
+          <ScalarProperty Name="haberRssId" ColumnName="haberRssId" />
+          <ScalarProperty Name="haberRssAdi" ColumnName="haberRssAdi" />
+          <ScalarProperty Name="haberRssLink" ColumnName="haberRssLink" />
+          <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kategoris">
+      <EntityTypeMapping TypeName="gundembakModel.kategori">
+        <MappingFragment StoreEntitySet="kategori">
+          <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+          <ScalarProperty Name="kategoriAd" ColumnName="kategoriAd" />
+          <ScalarProperty Name="kategoriBaslik" ColumnName="kategoriBaslik" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reklams">
+      <EntityTypeMapping TypeName="gundembakModel.reklam">
+        <MappingFragment StoreEntitySet="reklam">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="yanreklam" ColumnName="yanreklam" />
+          <ScalarProperty Name="ustreklam" ColumnName="ustreklam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="gundembakModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="eMail" ColumnName="eMail" />
+          <ScalarProperty Name="role" ColumnName="role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

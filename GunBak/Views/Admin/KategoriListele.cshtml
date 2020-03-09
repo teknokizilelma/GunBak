@@ -1,0 +1,38 @@
+﻿@model IEnumerable<GunBak.Models.kategori>
+
+@{
+    ViewBag.Title = "KategoriListele";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@if (ViewBag.Drm != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert(@ViewBag.Drm);
+        }
+    </script>
+}
+    <h2>Kategoriler</h2>
+    <table style="width:100%" class="table">
+        <tr>
+            <th>Id</th>
+            <th>Kategori Adı</th>
+            <th>Kategori Başlık</th>
+
+
+
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.kategoriId</td>
+                <td>@item.kategoriAd</td>
+                <td>@item.kategoriBaslik</td>
+                <td><a href="~/Admin/KategoriDuzenle/@item.kategoriId">Düzenle</a></td>
+                <td><a href="~/Admin/KategoriSil/@item.kategoriId">Sil</a></td>
+            </tr>
+
+        }
+    </table>
+    <a href="~/Admin/KategoriEkle" class="btn btn-default width-100">Kategori Ekle</a>
