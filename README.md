@@ -11,4 +11,8 @@ databaseServer yerine MYSQL database sunucusu
 databaseUser yerine MYSQL database kullanıcısı
 databasePass yerine MYSQL database şifresi girilerek ve sunucunuza gundembak.sql dosyasını import ederek kullanabilirsiniz.
 
+Admin panel: site/Admin
+User :admin@admin.com
+Pass :admin
+
 İyi Günler.
